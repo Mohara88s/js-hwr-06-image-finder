@@ -1,5 +1,6 @@
 import './sass/main.scss';
 import '../node_modules/material-design-icons/iconfont/material-icons.css'
+
 import pontyfyMassage from'./pontify-message'
 import galleryItemTemplate from './templates/gallery-item.hbs'
 var debounce = require('lodash.debounce');
@@ -65,4 +66,24 @@ function onLoadMoreBtnClick () {
                 refs.loadMoreBtn.setAttribute('hidden', true)
             }
     })
+}
+
+
+import * as basicLightbox from 'basiclightbox'
+
+refs.gallery.addEventListener('click', onGalleryClick)
+
+function onGalleryClick(event) {
+    console.log(event.target)
+    console.log(event.target.data)
+    // if (event.target.className !== 'gallery__item') { return }
+    console.log(event.target.getElementByClassName('gallery__image'))
+murkupLightbox(event.target.src) 
+}
+
+function murkupLightbox(URL) {
+    const instance = basicLightbox.create(`
+    <img class='img__large' src="${URL}" width="800" height="600">
+    `)
+    instance.show()
 }
