@@ -1,4 +1,5 @@
 import './sass/main.scss';
+import '../node_modules/material-design-icons/iconfont/material-icons.css'
 
 import galleryItemTemplate from './templates/gallery-item.hbs'
 
@@ -17,11 +18,13 @@ function onSearchFormFieldInput () {
     clearGallery()
     pixabayApiService.query = refs.searchFormField.value
     pixabayApiService.resetPage()
-    console.log(pixabayApiService.page)
-    console.log(pixabayApiService.query)
     pixabayApiService.fetchApiByQuery()
-    .then (data => {
-        markupGallery(data)})
+        .then(data => {
+            markupGallery(data)
+        })
+        .then(() => {
+        refs.loadMoreBtn.removeAttribute('hidden')
+    })
     
 }
 function clearGallery() {
@@ -37,8 +40,19 @@ refs.loadMoreBtn.addEventListener('click', onLoadMoreBtnClick)
 
 function onLoadMoreBtnClick () {
     pixabayApiService.incrementPage()
-    console.log(pixabayApiService.page)
     pixabayApiService.fetchApiByQuery()
-    .then (data => markupGallery(data))
+    .then(data => {
+        markupGallery(data)
+        console.log(`indexItem-${data[0].indexItem}`)
+        const element = document.getElementById(`indexItem-${data[0].indexItem}`);
+        console.log(data[0].indexItem)
+        console.log(element)
+        element.scrollIntoView({
+  behavior: 'smooth',
+  block: 'start',
+});
+    })
+    
+    
 
 }
