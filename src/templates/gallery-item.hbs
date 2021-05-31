@@ -1,8 +1,8 @@
 {{#each this}}
 <li class="gallery__item" id="indexItem-{{indexItem}}" >
   <div class="photo-card">
-    <img class="gallery__image" src="{{webformatURL}}" alt="{{tags}}" data-URL="{{largeImageURL}}" />
-    <div class="stats" data-URL="{{largeImageURL}}" >
+    <img class="gallery__image" src="{{webformatURL}}" alt="{{tags}}" largeImageURL="{{largeImageURL}}" />
+    <div class="stats">
       <p class="stats-item">
         <i class="material-icons">thumb_up</i>
         {{likes}}

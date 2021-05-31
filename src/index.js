@@ -74,11 +74,8 @@ import * as basicLightbox from 'basiclightbox'
 refs.gallery.addEventListener('click', onGalleryClick)
 
 function onGalleryClick(event) {
-    console.log(event.target)
-    console.log(event.target.data)
-    // if (event.target.className !== 'gallery__item') { return }
-    console.log(event.target.getElementByClassName('gallery__image'))
-murkupLightbox(event.target.src) 
+    if (!event.target.hasAttribute('largeimageurl')) { return }
+murkupLightbox(event.target.getAttribute('largeimageurl')) 
 }
 
 function murkupLightbox(URL) {
