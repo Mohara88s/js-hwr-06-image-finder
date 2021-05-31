@@ -17,7 +17,10 @@ export default class PixabayApiService {
                 return element
             })
             })
-    .catch(console.log)
+        .catch((error) => {
+            console.log(error)
+            return 404
+        })
     }
 
     incrementPage() {
