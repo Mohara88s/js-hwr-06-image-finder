@@ -1,13 +1,13 @@
 export default class PixabayApiService {
     constructor() {
-        this.KAY = '21847975-d0fb10f6989c918e9c55b7840'
+        this.KEY = '21847975-d0fb10f6989c918e9c55b7840'
         this.page = 1
         this.searchQuery = ''
         this.indexItem = 0
     }
     
     fetchApiByQuery () {
-    return fetch(`https://pixabay.com/api/?image_type=photo&orientation=horizontal&q=${this.searchQuery}&page=${this.page}&per_page=12&key=${this.KAY}`)
+    return fetch(`https://pixabay.com/api/?image_type=photo&orientation=horizontal&q=${this.searchQuery}&page=${this.page}&per_page=12&key=${this.KEY}`)
     .then(r=>r.json())
         .then(data => data.hits)
         .then(data => {

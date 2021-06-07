@@ -1,7 +1,7 @@
 import './sass/main.scss';
 import '../node_modules/material-design-icons/iconfont/material-icons.css'
 
-import pontyfyMassage from'./pontify-message'
+import pnotifyMassage from'./pnotify-message.js'
 import galleryItemTemplate from './templates/gallery-item.hbs'
 var debounce = require('lodash.debounce');
 import PixabayApiService from './apiService'
@@ -23,11 +23,11 @@ function onSearchFormFieldInput () {
     pixabayApiService.fetchApiByQuery()
         .then(data => {
             if (data === 404) {
-                pontyfyMassage('Missing server!')
+                pnotifyMassage('Missing server!')
                 return
             }
             if (data.length === 0) {
-                pontyfyMassage('Nothing was found for your query!')
+                pnotifyMassage('Nothing was found for your query!')
                 return
             }
             markupGallery(data)
@@ -57,7 +57,7 @@ function onLoadMoreBtnClick () {
     pixabayApiService.fetchApiByQuery()
         .then(data => {
             if (data === 404) {
-                pontyfyMassage('Missing server!')
+                pnotifyMassage('Missing server!')
                 return
             }
             markupGallery(data)
@@ -95,7 +95,7 @@ function observerCollback ([entrie], observerRef) {
     pixabayApiService.fetchApiByQuery()
         .then(data => {
             if (data === 404) {
-                pontyfyMassage('Missing server!')
+                pnotifyMassage('Missing server!')
                 return
             }
             markupGallery(data)
